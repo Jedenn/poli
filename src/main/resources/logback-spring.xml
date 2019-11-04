@@ -1,25 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
+    <!-- 将日志输出到文本文件中-->
     <appender name="ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
-
         <file>log/server.txt</file>
-
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <Pattern>
                 %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
             </Pattern>
         </encoder>
-
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>log/server-%d{yyyy-MM-dd}.%i.txt</fileNamePattern>
             <maxFileSize>3MB</maxFileSize>
             <maxHistory>5</maxHistory>
             <totalSizeCap>15MB</totalSizeCap>
         </rollingPolicy>
-
     </appender>
 
+    <!-- 将日志输出到标准输出-->
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+            </Pattern>
+        </encoder>
+    </appender>
+
+    <!-- 为方便调试，将日志输出到标准输出 -->
     <root level="INFO">
-        <appender-ref ref="ROLLING" />
+        <appender-ref ref="STDOUT" />
     </root>
 </configuration>

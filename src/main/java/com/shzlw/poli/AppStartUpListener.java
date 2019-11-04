@@ -13,6 +13,6 @@ public class AppStartUpListener {
 
     @EventListener(ApplicationReadyEvent.class)
     public void applicationReadyEvent () {
-        LOGGER.info("Welcome from Poli!");
+        LOGGER.info("Welcome to Poli!");
     }
 }
